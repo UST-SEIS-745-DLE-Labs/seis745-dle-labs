@@ -4,9 +4,8 @@
 
 Follow development environment setup instructions located in setup-docs
 to ensure your AWS Academy Learner Lab is up and running, you are logged
-into your GitHub Codespace, and you have cloned the repository for this
-particular lab:
-[**https://github.com/UST-SEIS-745-DLE-Labs/lab-01-aws-emr-connecting-to-cloud-storage**](https://github.com/UST-SEIS-745-DLE-Labs/lab-01-aws-emr-connecting-to-cloud-storage).
+into your GitHub Codespace, and you have cloned our lab repository:
+[**https://github.com/UST-SEIS-745-DLE-Labs/seis745-dle-labs**](https://github.com/UST-SEIS-745-DLE-Labs/seis745-dle-labs).
 
 1.  You should now see your Codespace environment along with the cloned
     lab repository. If you need to clone the repository, open the

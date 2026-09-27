@@ -1,7 +1,7 @@
 ############################################
 # INSTALL MISC DEPENDENCIES                #
 ############################################
-sudo apt update && sudo apt install -y uuid-runtime mysql-client
+sudo apt update && sudo apt install -y uuid-runtime
 
 ############################################
 # CONFIGURE AWS CLI                        #
