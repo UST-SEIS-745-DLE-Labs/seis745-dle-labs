@@ -8,7 +8,6 @@ LAB_HOME="/home/codespace"
 cd "${LAB_HOME}/seis745-dle-labs/${LAB_FOLDER}"
 source ../${LAB_INFRA_FOLDER}/lab-params.sh
 
-source infra/lab-params.sh
 EC2_INSTANCE_ID=`aws ec2 describe-instances --filters "Name=tag:Name,Values=${LAB_EC2_NAME}" "Name=instance-state-name,Values=running" --query 'Reservations[*].Instances[*].InstanceId | [0] | [0]' --output text`
 EC2_DNS=`aws ec2 describe-instances --filters "Name=tag:Name,Values=${LAB_EC2_NAME}" --query 'Reservations[*].Instances[*].PublicDnsName | [0] | [0]' --output text`
 S3_BUCKET_NAME=`aws s3api list-buckets --query "Buckets[0].Name" --output text`

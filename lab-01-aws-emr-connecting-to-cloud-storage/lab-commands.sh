@@ -15,7 +15,7 @@ LAB_CLUSTER_ID=`aws emr list-clusters --query "Clusters[?Name=='${LAB_ENV_NAME}'
 aws emr wait cluster-running --cluster-id ${LAB_CLUSTER_ID}
 LAB_EMR_MASTER_PUBLIC_HOST=`aws emr describe-cluster --cluster-id ${LAB_CLUSTER_ID} --query Cluster.MasterPublicDnsName --output text`
 
-ssh -i "${LAB_KEY_FILE}" -o SendEnv=S3_BUCKET_NAME "hadoop@${LAB_EMR_MASTER_PUBLIC_HOST}"
+ssh -i "${LAB_KEY_FILE}"
 
 ############################################
 # PySpark import from AWS Open Data        #
