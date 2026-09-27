@@ -1,7 +1,8 @@
 ############################################
 # INITIALIZE LAB PARAMETERS AND VARIABLES  #
 ############################################
-source infra/lab-params.sh
+INFRA_DIR=/home/codespace/seis745-dle-labs/infra-emr-cluster
+source ${INFRA_DIR}/lab-params.sh
 
 ############################################
 # USE EXISTING OR CREATE NEW S3 BUCKET     #
@@ -29,7 +30,7 @@ aws ec2 create-key-pair \
 chmod 400 "${LAB_KEY_FILE}" #change permissions
 
 aws cloudformation deploy \
-  --template-file ./infra/template.json \
+  --template-file ${INFRA_DIR}/template.json \
   --stack-name "${LAB_STACK_NAME}" \
   --capabilities CAPABILITY_NAMED_IAM \
   --parameter-overrides \
@@ -43,3 +44,4 @@ aws cloudformation deploy \
     KeyPairName="${LAB_KEY_NAME}" \
     ReleaseLabel="emr-7.12.0" \
     EbsRootVolumeSize=32
+

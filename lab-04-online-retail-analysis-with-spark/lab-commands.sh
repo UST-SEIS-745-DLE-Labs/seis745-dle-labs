@@ -17,7 +17,7 @@ LAB_CLUSTER_ID=`aws emr list-clusters --query "Clusters[?Name=='${LAB_ENV_NAME}'
 aws emr wait cluster-running --cluster-id ${LAB_CLUSTER_ID}
 LAB_EMR_MASTER_PUBLIC_HOST=`aws emr describe-cluster --cluster-id ${LAB_CLUSTER_ID} --query Cluster.MasterPublicDnsName --output text`
 
-echo "Access HUE console here: https://${LAB_EMR_MASTER_PUBLIC_HOST}:8888"
+echo "Access HUE console here: http://${LAB_EMR_MASTER_PUBLIC_HOST}:8888"
 
 # Copy lab files to Hadoop master node
 scp -i "${LAB_KEY_FILE}" retail_db.sql "hadoop@${LAB_EMR_MASTER_PUBLIC_HOST}:/home/hadoop"
@@ -42,7 +42,6 @@ exit;
 
 # Set environment variables in spark configurations
 sudo su root
-cp /usr/lib/sqoop/lib/mariadb-connector-java.jar /usr/lib/spark/jars/mariadb-connector-java.jar
 MASTER_NODE_PRIVATE_HOST=`hostname -i`
 SPARK_USER=spark
 SPARK_PASSWORD=changeme1
@@ -127,4 +126,4 @@ import_jdbc_to_s3(jdbc_driver, jdbc_url, db_user, db_password, "products", s3_bu
 exit()
 
 exit
-exit
+

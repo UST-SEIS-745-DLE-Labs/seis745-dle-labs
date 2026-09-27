@@ -93,3 +93,5 @@ line. Be sure to observe the output on your terminal.
         nodes (and a driver node) running both Spark and HDFS. This step
         may take 15+ minutes as you provision a big data cluster from
         scratch.
+
+![](./media/image7.png)

@@ -1,7 +1,8 @@
 ############################################
 # INITIALIZE LAB PARAMETERS AND VARIABLES  #
 ############################################
-source ./infra/lab-params.sh
+INFRA_DIR=/home/codespace/seis745-dle-labs/infra-emr-cluster
+source ${INFRA_DIR}/lab-params.sh
 
 ############################################
 # DELETE LAB RESOURCES                     #

@@ -1,0 +1,3 @@
+**/*.pem
+infra-rds-kafka-dbez/lab-params.sh
+infra-emr-cluster/lab-params.sh
