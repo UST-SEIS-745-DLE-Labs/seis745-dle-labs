@@ -28,7 +28,7 @@ deployment in AWS.
 
 Complete all steps within setup-docs to ensure your AWS lab environment is up and running, your GitHub Codespace is running and accessible in your browser, and you have either cloned ('git clone' in the CLI or command pallete) or pulled the latest changes ('git pull').  The repository url is [**https://github.com/UST-SEIS-745-DLE-Labs/seis745-dle-labs**](https://github.com/UST-SEIS-745-DLE-Labs/seis745-dle-labs)
 
-The directory for this particular lab is **lab-01-aws-emr-connecting-to-cloud-storage**.
+The directory for this particular lab is **lab-02-streaming-cdc-kafka-debezium**.
 
 ## Section 2: Deploy lab infrastructure
 

@@ -1,7 +1,9 @@
 ############################################
 # INITIALIZE LAB PARAMETERS AND VARIABLES  #
 ############################################
-source infra/lab-params.sh
+INFRA_DIR=/home/codespace/seis745-dle-labs/infra-rds-kafka-dbez
+source ${INFRA_DIR}/lab-params.sh
+
 EC2_INSTANCE_ID=`aws ec2 describe-instances --filters "Name=tag:Name,Values=${LAB_EC2_NAME}" "Name=instance-state-name,Values=running" --query 'Reservations[*].Instances[*].InstanceId | [0] | [0]' --output text`
 EC2_DNS=`aws ec2 describe-instances --filters "Name=tag:Name,Values=${LAB_EC2_NAME}" --query 'Reservations[*].Instances[*].PublicDnsName | [0] | [0]' --output text`
 S3_BUCKET_NAME=`aws s3api list-buckets --query "Buckets[0].Name" --output text`

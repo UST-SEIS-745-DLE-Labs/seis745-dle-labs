@@ -1,7 +1,8 @@
 ############################################
 # INITIALIZE LAB PARAMETERS AND VARIABLES  #
 ############################################
-source infra/lab-params.sh
+INFRA_DIR=/home/codespace/seis745-dle-labs/infra-rds-kafka-dbez
+source ${INFRA_DIR}/lab-params.sh
 
 ############################################
 # CREATE OR REPLACE S3 BUCKET              #
@@ -118,7 +119,7 @@ mysql -u"${MYSQL_USER}" -p"${MYSQL_PASSWORD}" -h"${MYSQL_HOST}" -t < /home/codes
 
 cd -
 
-mysql -u"${MYSQL_USER}" -p"${MYSQL_PASSWORD}" -h"${MYSQL_HOST}" -t < sql-create-streaming-tables.sql
+mysql -u"${MYSQL_USER}" -p"${MYSQL_PASSWORD}" -h"${MYSQL_HOST}" -t < ${INFRA_DIR}/sql-create-streaming-tables.sql
 mysql -u"${MYSQL_USER}" -p"${MYSQL_PASSWORD}" -h"${MYSQL_HOST}" -sN <<< "SHOW TABLES FROM employees"
 
 
@@ -126,7 +127,7 @@ mysql -u"${MYSQL_USER}" -p"${MYSQL_PASSWORD}" -h"${MYSQL_HOST}" -sN <<< "SHOW TA
 # SET UP KAFKA AND DEBEZIUM                #
 ############################################
 mkdir /home/codespace/lab2-files
-cp confluentinc-kafka-connect-s3-10.5.6.zip /home/codespace/lab2-files
+cp ${INFRA_DIR}/confluentinc-kafka-connect-s3-10.5.6.zip /home/codespace/lab2-files
 scp -r -i "${LAB_KEY_FILE}" /home/codespace/lab2-files "ec2-user@${EC2_DNS}:/home/ec2-user/docker-share"
 
 ssh -i "${LAB_KEY_FILE}" "ec2-user@${EC2_DNS}"

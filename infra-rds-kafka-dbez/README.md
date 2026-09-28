@@ -7,7 +7,7 @@
 
 ![](./media/image2.png)
 
-2)  First, open infra/lab-params.sh You need to update the CLIENT_IP
+2)  First, open lab-params.sh You need to update the CLIENT_IP
     variable with your IP address shown at
     <https://checkip.amazonaws.com/>. Don't forget to save lab-params.sh
     after updating the variable (Ctrl+S on Windows)
