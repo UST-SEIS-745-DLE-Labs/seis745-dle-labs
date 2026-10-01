@@ -27,6 +27,7 @@ ssh -i "${LAB_KEY_FILE}" "hadoop@${LAB_EMR_MASTER_PUBLIC_HOST}"
 ############################################
 # LAB COMMANDS ON EMR                      #
 ############################################
+S3_BUCKET_NAME=`aws s3api list-buckets --query "Buckets[0].Name" --output text`
 
 # Retrieve default username, password, and host name for mysql
 MYSQL_PASSWORD=`sudo mysql --print-defaults | grep port=3306 | sed -r 's/(.+)--password=([^ ]+) --(.+)/\2/'`
@@ -126,4 +127,3 @@ import_jdbc_to_s3(jdbc_driver, jdbc_url, db_user, db_password, "products", s3_bu
 exit()
 
 exit
-
