@@ -27,7 +27,6 @@ ssh -i "${LAB_KEY_FILE}" "hadoop@${LAB_EMR_MASTER_PUBLIC_HOST}"
 ############################################
 # LAB COMMANDS ON EMR                      #
 ############################################
-S3_BUCKET_NAME=`aws s3api list-buckets --query "Buckets[0].Name" --output text`
 
 # Retrieve default username, password, and host name for mysql
 MYSQL_PASSWORD=`sudo mysql --print-defaults | grep port=3306 | sed -r 's/(.+)--password=([^ ]+) --(.+)/\2/'`
@@ -89,6 +88,7 @@ hadoop credential create mysql.password \
     
 hdfs dfs -ls /user/root/keystores # List keystores, make sure keystore exists
 
+S3_BUCKET_NAME=`aws s3api list-buckets --query "Buckets[0].Name" --output text`
 pyspark --conf spark.driver.args="$S3_BUCKET_NAME"
 
 s3_bucket = sc.getConf().get("spark.driver.args")
