@@ -1,5 +1,3 @@
-# 
-
 ## Section 1: Set environment variables and create an S3 bucket (or reuse an existing one)
 
 1)  Once you have opened your Codespace and cloned the repository, it
