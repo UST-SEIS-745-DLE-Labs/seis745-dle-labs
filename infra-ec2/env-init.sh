@@ -34,7 +34,9 @@ chmod 400 "${LAB_KEY_FILE}" #change permissions
 aws ec2 create-security-group --group-name "${LAB_EC2_NAME}-sg" --description "Nifi lab security group" --no-cli-pager
 SECURITY_GROUP_ID=`aws ec2 describe-security-groups --group-names "${LAB_EC2_NAME}-sg" --query "SecurityGroups | [0].GroupId" --output text`
 
-aws ec2 authorize-security-group-ingress --group-id ${SECURITY_GROUP_ID} --protocol tcp --port 9443 --cidr "${CLIENT_IP}${CIDR_SUFFIX}" --no-cli-pager
+aws ec2 authorize-security-group-ingress --group-id ${SECURITY_GROUP_ID} --protocol tcp --port 9443 --cidr "${CLIENT_IP}${CIDR_SUFFIX}" --no-cli-pager # NiFi
+aws ec2 authorize-security-group-ingress --group-id ${SECURITY_GROUP_ID} --protocol tcp --port 7474 --cidr "${CLIENT_IP}${CIDR_SUFFIX}" --no-cli-pager # Neo4j Console
+aws ec2 authorize-security-group-ingress --group-id ${SECURITY_GROUP_ID} --protocol tcp --port 7687 --cidr "${CLIENT_IP}${CIDR_SUFFIX}" --no-cli-pager # Neo4j Bolt
 aws ec2 authorize-security-group-ingress --group-id ${SECURITY_GROUP_ID} --protocol tcp --port 22 --cidr "${CODESPACE_IP}/32" --no-cli-pager
 
 aws ec2 run-instances --image-id ami-06e46074ae430fba6 --count 1 --instance-type t2.large --key-name ${LAB_KEY_NAME} --security-group-ids ${SECURITY_GROUP_ID} --iam-instance-profile Name=LabInstanceProfile --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${LAB_EC2_NAME}}]" --output text --no-cli-pager
