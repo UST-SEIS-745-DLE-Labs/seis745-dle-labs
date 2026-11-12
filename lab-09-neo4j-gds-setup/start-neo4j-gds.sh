@@ -8,8 +8,6 @@ source ${INFRA_DIR}/lab-params.sh
 # COPY FILES, CONNECT TO EC2 INSTANCE      #
 ############################################
 EC2_DNS=`aws ec2 describe-instances --filters "Name=tag:Name,Values=${LAB_EC2_NAME}" "Name=instance-state-name,Values=running" --query 'Reservations[*].Instances[*].PublicDnsName | [0] | [0]' --output text`
-echo $EC2_DNS > ec2-dns.txt
-echo https://$EC2_DNS:7474 > neo4j-url.txt
 
 ssh -i "${LAB_KEY_FILE}" "ec2-user@${EC2_DNS}"
 
