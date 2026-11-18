@@ -1,15 +1,15 @@
 RETURN gds.version();
 CALL gds.list();
 
-MATCH (a:Actor)-[r:ACTED_IN]->(m:Movie) RETURN a,m
+MATCH (a:Actor)-[r:ACTED_IN]->(m:Movie) RETURN a,m,r
 
-MATCH (a:Actor)-[*1..2]-(b:Actor|Movie)
+MATCH (a:Actor)-[r*1..2]-(b:Actor|Movie)
 WHERE a.name = 'Kevin Bacon'
-RETURN a,b
+RETURN a,b,r
 
-MATCH (a:Actor)-[*1..3]-(b:Actor|Movie)
+MATCH (a:Actor)-[r*1..3]-(b:Actor|Movie)
 WHERE a.name = 'Kevin Bacon'
-RETURN a,b
+RETURN a,b,r
 
 
 MATCH (a:Actor)-[r:ACTED_IN]->(m:Movie)
@@ -38,4 +38,4 @@ YIELD nodePropertiesWritten, componentCount;
 
 MATCH (a:Actor)-[r:ACTED_IN]->(m:Movie)
 WHERE a.componentId = 912 AND m.componentId = 912
-RETURN a, m
+RETURN a,m,r
